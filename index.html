@@ -7,50 +7,67 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>BYUH CGPA Calculator</h1>
-    <form id="cgpaForm">
-        <label for="earnedCredit">Total Earned Credit (exclude current semester):</label>
-        <input type="number" id="earnedCredit" step="1" min="0" required>
-        
-        <label for="currentCGPA">Current CGPA:</label>
-        <input type="number" id="currentCGPA" step="0.01" min="0" max="4" required>
+    <div id="main-content">
+        <h1>BYUH CGPA Calculator</h1>
+        <form id="cgpaForm">
+            <label for="earnedCredit">Total Earned Credit (exclude current semester):</label>
+            <input type="number" id="earnedCredit" step="1" min="0" required>
+            
+            <label for="currentCGPA">Current CGPA:</label>
+            <input type="number" id="currentCGPA" step="0.01" min="0" max="4" required>
 
-        <div id="coursesContainer">
-            <div class="course">
-                <label class="courseLabel">Course 1:</label>
-                <label>Grade:</label>
-                <select class="grade" required>
-                    <option value="A">A</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B">B</option>
-                    <option value="B-">B-</option>
-                    <option value="C+">C+</option>
-                    <option value="C">C</option>
-                    <option value="C-">C-</option>
-                    <option value="D+">D+</option>
-                    <option value="D">D</option>
-                    <option value="D-">D-</option>
-                    <option value="F">F</option>
-                    <option value="WF">WF</option>
-                </select>
-                <label>Credit(s):</label>
-                <input type="number" class="credits" step="1" min="0" required>
-                <button type="button" onclick="removeCourse(this)">Remove</button>
+            <div id="coursesContainer">
+                <div class="course">
+                    <label class="courseLabel">Course 1:</label>
+                    <label>Grade:</label>
+                    <select class="grade" required>
+                        <option value="A">A</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B">B</option>
+                        <option value="B-">B-</option>
+                        <option value="C+">C+</option>
+                        <option value="C">C</option>
+                        <option value="C-">C-</option>
+                        <option value="D+">D+</option>
+                        <option value="D">D</option>
+                        <option value="D-">D-</option>
+                        <option value="F">F</option>
+                        <option value="WF">WF</option>
+                    </select>
+                    <label>Credit(s):</label>
+                    <input type="number" class="credits" step="1" min="0" required>
+                    <button type="button" onclick="removeCourse(this)">Remove</button>
+                </div>
+            </div>
+            
+            
+            <button type="button" onclick="addCourse()">Add Another Course</button>
+            <button type="button" onclick="processInputs(document.getElementById('cgpaForm'))">Calculate CGPA</button>
+        </form>
+        <div id="semGPA"></div>
+        <div id="result"></div>
+
+        <script src="script.js"></script>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Mingyang Wang. All rights reserved.</p>
+            <a href="#" id="disclaimerLink">Disclaimer</a>
+        </div>
+
+        <div id="disclaimerModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Disclaimer</h2>
+                <p>Please be aware that the information provided by the CGPA Calculator, particularly any results pertaining to academic performance or requirements, is offered solely for informational purposes. This is not an official BYU-Hawaii website and is not affiliated with, maintained, authorized, endorsed, or sponsored by the Brigham Young University-Hawaii.</p>
+                <p>The data and information available through this site may not always be entirely accurate, comprehensive, verified, or up-to-date. While I strive to ensure that the information provided is correct and current, there may be instances of inadvertent inaccuracies. As such, I make no guarantees regarding the reliability and accuracy of the information presented.</p>
+                <p>This tool is intended to be used as a reference aid and should not be considered a definitive source for academic planning or decisions. Users are encouraged to verify official information with Brigham Young University-Hawaii's official resources.</p>
+                <p>Your use of this website indicates your understanding and acceptance of these terms.</p>
             </div>
         </div>
         
-        
-        <button type="button" onclick="addCourse()">Add Another Course</button>
-        <button type="button" onclick="processInputs(document.getElementById('cgpaForm'))">Calculate CGPA</button>
-    </form>
-    <div id="semGPA"></div>
-    <div id="result"></div>
-
-    <script src="script.js"></script>
-
-    <footer>
-        <p>&copy; 2024 CGPA Calculator. All rights reserved.</p>
     </footer>
 </body>
 </html>
