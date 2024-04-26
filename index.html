@@ -11,8 +11,7 @@
         <h1>BYUH CGPA Calculator</h1>
         <form id="cgpaForm">
             <label for="earnedCredit">Total Earned Credit (exclude current semester):</label>
-            <input type="tel" id="earnedCredit" pattern="[0-9]*" inputmode="numeric" step="1" min="0" required>
-            <!-- <input type="number" id="earnedCredit" step="1" min="0" required> -->
+            <input type="number" id="earnedCredit" step="1" min="0" required>
             
             <label for="currentCGPA">Current CGPA:</label>
             <input type="number" id="currentCGPA" step="0.01" min="0" max="4" required>
@@ -37,7 +36,7 @@
                         <option value="WF">WF</option>
                     </select>
                     <label>Credit(s):</label>
-                    <input input type="tel" class="credits" pattern="[0-9]*" inputmode="numeric" step="1" min="0" required>
+                    <input type="number" class="credits" step="1" min="0" required>
                     <button type="button" onclick="removeCourse(this)">Remove</button>
                 </div>
             </div>
@@ -54,6 +53,7 @@
 
     <footer>
         <div class="footer-content">
+            <p>&copy; 2024 Mingyang Wang. All rights reserved.</p>
             <a href="#" id="disclaimerLink">Disclaimer</a>
         </div>
 
