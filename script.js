@@ -25,24 +25,6 @@ function updateCourseLabels() {
     });
 }
 
-function processInputs(form) {
-    const earnedCredit = parseFloat(document.getElementById('earnedCredit').value);
-    const currentCGPA = parseFloat(document.getElementById('currentCGPA').value);
-
-    const courses = Array.from(form.querySelectorAll('.course'));
-    const inputs = courses.map(course => {
-        const credit = parseInt(course.querySelector('.credits').value);
-        const grade = course.querySelector('.grade').value.toUpperCase();
-        return [credit, grade];
-    });
-
-    const currentSemCredits = inputs.reduce((acc, [credit]) => acc + credit, 0);
-    const currentGPA = calculateGPA(inputs);
-    const finalCGPA = calculateCGPA(earnedCredit, currentCGPA, currentSemCredits, currentGPA);
-
-    document.getElementById('semGPA').textContent = `Your semester GPA is: ${currentGPA}`;
-    document.getElementById('result').textContent = `Your CGPA is: ${finalCGPA}`;
-}
 
 
 function calculateCGPA(earnedCredit, currentCGPA, currentSemCredits, gpa) {
@@ -67,6 +49,9 @@ function calculateGPA(inputs) {
         }
     });
 
+    if (totalCredits === 0) {
+        return '0.00';
+    }
     const gpa = totalPoints / totalCredits;
     return gpa.toFixed(2);
 }
@@ -77,7 +62,7 @@ function processInputs(form) {
 
     const courses = Array.from(form.querySelectorAll('.course'));
     const inputs = courses.map(course => {
-        const credit = parseInt(course.querySelector('.credits').value);
+        const credit = parseInt(course.querySelector('.credits').value, 10);
         const grade = course.querySelector('.grade').value.toUpperCase();
         return [credit, grade];
     });
